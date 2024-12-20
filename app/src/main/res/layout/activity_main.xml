@@ -11,9 +11,11 @@
     <include layout="@layout/toolbar_layout" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_images"
+        android:id="@+id/carousel_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="@id/main" />
 

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dditarea7.presentation.ImageAdapter
+import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.carousel.FullScreenCarouselStrategy
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view_images)
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val carouselRecyclerView: RecyclerView = findViewById(R.id.carousel_recycler_view)
+        carouselRecyclerView.setLayoutManager(CarouselLayoutManager(FullScreenCarouselStrategy()))
 
-        val imageResIds = listOf(
+        val listOfImages = listOf(
             R.drawable.z_01,
             R.drawable.z_02,
             R.drawable.z_03,
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.z_06
         )
 
-        val adapter = ImageAdapter(imageResIds)
-        recyclerView.adapter = adapter
+        val adapter = ImageAdapter(listOfImages)
+        carouselRecyclerView.adapter = adapter
     }
 }
