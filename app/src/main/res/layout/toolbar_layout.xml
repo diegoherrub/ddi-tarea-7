@@ -12,7 +12,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@android:color/transparent">
+        android:background="@color/md_theme_secondaryContainer">
+        <!-- android:background="@android:color/transparent"-->
 
         <ImageButton
             android:id="@+id/button_back"

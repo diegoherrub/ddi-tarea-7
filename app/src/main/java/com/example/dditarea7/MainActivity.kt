@@ -1,20 +1,30 @@
 package com.example.dditarea7
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.dditarea7.presentation.ImageAdapter
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view_images)
+        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        val imageResIds = listOf(
+            R.drawable.z_01,
+            R.drawable.z_02,
+            R.drawable.z_03,
+            R.drawable.z_04,
+            R.drawable.z_05,
+            R.drawable.z_06
+        )
+
+        val adapter = ImageAdapter(imageResIds)
+        recyclerView.adapter = adapter
     }
 }
