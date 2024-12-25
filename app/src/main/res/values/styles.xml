@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="style_main">
         <item name="android:padding">@dimen/padding_small</item>
         <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="style_seller_info_layout">
+        <item name="android:padding">@dimen/padding</item>
+    </style>
+
+    <style name="style_user_image">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">80dp</item>
+    </style>
+
+    <style name="style_user_image_shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="style_user_name">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="style_rating_bar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_rating_stars</item>
+        <item name="android:numStars">5</item>
+        <item name="android:rating">3.5</item>
+        <item name="android:stepSize">0.5</item>
+        <item name="android:minWidth">24dp</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_small</item>
+        <item name="android:isIndicator">false</item>
     </style>
 </resources>
