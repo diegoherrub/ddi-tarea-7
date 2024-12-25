@@ -1,4 +1,4 @@
-package com.example.dditarea7.domain
+package com.example.dditarea7.app
 
 import android.view.View
 import com.google.android.material.carousel.CarouselLayoutManager

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,8 +8,6 @@
     tools:context=".MainActivity"
     style="@style/style_main">
 
-    <include layout="@layout/recycler_layout" />
+    <include layout="@layout/main_layout" />
 
-    <include layout="@layout/toolbar_layout" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

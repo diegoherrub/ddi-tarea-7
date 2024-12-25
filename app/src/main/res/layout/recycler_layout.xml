@@ -11,7 +11,7 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="@+id/main" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/carousel_indicator"
@@ -23,5 +23,5 @@
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carousel_recycler_view" />
+        app:layout_constraintBottom_toBottomOf="@+id/carousel_recycler_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

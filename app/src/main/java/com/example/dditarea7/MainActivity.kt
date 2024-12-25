@@ -1,17 +1,15 @@
 package com.example.dditarea7
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dditarea7.data.local.LocalMockImages
-import com.example.dditarea7.domain.findCenterView
+import com.example.dditarea7.app.findCenterView
 import com.example.dditarea7.presentation.ImageAdapter
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.FullScreenCarouselStrategy
-import com.google.android.material.tabs.TabLayout
 
 class MainActivity : AppCompatActivity() {
 
