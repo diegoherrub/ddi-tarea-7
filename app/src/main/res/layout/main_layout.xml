@@ -1,13 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main_layout">
+    android:orientation="vertical">
 
-    <include layout="@layout/recycler_layout" />
+    <!-- carousel layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/carousel_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/carousel_indicator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding"
+        app:layout_constraintBottom_toBottomOf="@+id/carousel_recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- seller info layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/seller_info_layout"
+        style="@style/style_seller_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/carousel_recycler_view">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_image"
+            style="@style/style_user_image"
+            android:src="@drawable/user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/style_user_image_shape" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/user_name"
+            style="@style/style_user_name"
+            android:text="@string/string_user_name"
+            app:layout_constraintStart_toEndOf="@+id/user_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:id="@+id/rating_bar"
+            style="@style/style_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/user_name"
+            app:layout_constraintStart_toEndOf="@+id/user_image"
+            app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rated_times"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginBottom="6dp"
+            android:text="(190)"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="@id/rating_bar"
+            app:layout_constraintEnd_toEndOf="@id/rating_bar"
+            app:layout_constraintTop_toTopOf="@id/rating_bar" />
+
+        <com.google.android.material.button.MaterialButton
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/md_theme_background"
+            android:text="Enviar..."
+            android:textColor="@color/md_theme_primary"
+            app:cornerRadius="5dp"
+            android:elevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/user_name"
+            app:strokeColor="@color/md_theme_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:lineHeight="0dp"
+            app:icon="@drawable/checkroom"
+            app:iconTint="@color/md_theme_primary"
+            android:text="Anuncios frecuentes"
+            android:padding="@dimen/padding_small"
+            android:textSize="12sp"
+            app:iconGravity="textStart"
+            android:textAlignment="center"
+            android:textColor="@color/md_theme_primary"
+            android:backgroundTint="@color/md_theme_inversePrimary"
+            app:layout_constraintTop_toBottomOf="@id/rating_bar"
+            app:layout_constraintStart_toStartOf="@id/user_name"
+            app:layout_constraintEnd_toEndOf="@+id/rated_times"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include layout="@layout/toolbar_layout" />
-
-    <include layout="@layout/seller_info_layout" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
