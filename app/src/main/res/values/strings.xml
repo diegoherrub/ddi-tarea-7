@@ -2,4 +2,13 @@
     <string name="app_name">DDItarea7</string>
     <string name="string_slipper_image">Slipper Image</string>
     <string name="string_user_name">xxxUserNamexxx</string>
+    <string name="string_slipper_title">Zapatillas El Ganso Verdes Talla 43 \nNuevas!!</string>
+    <string name="string_slipper_number">43 ·&#160;</string>
+    <string name="string_slipper_state">Nuevo con etiquetas ·&#160;</string>
+    <string name="string_link_el_ganso"><u>EL GANSO</u></string>
+
+    <!-- More options menu -->
+    <string name="string_report">Denunciar</string>
+    <string name="string_share">Compartir</string>
+
 </resources>

@@ -6,6 +6,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <Toolbar
+        android:padding="@dimen/padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent" >
+
+        <!-- android:background="@color/md_theme_secondaryContainer" -->
+
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_24dp" />
+
+        <ImageButton
+            android:id="@+id/button_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="@dimen/margin"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/more_vert_24dp" />
+    </Toolbar>
+
     <!-- carousel layout -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/carousel_recycler_view"
@@ -33,7 +59,7 @@
         android:id="@+id/seller_info_layout"
         style="@style/style_seller_info_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/carousel_recycler_view">
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -64,12 +90,13 @@
             android:id="@+id/rated_times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginBottom="6dp"
             android:text="(190)"
-            android:textSize="17sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
             app:layout_constraintEnd_toEndOf="@id/rating_bar"
+            app:layout_constraintStart_toEndOf="@id/user_name"
             app:layout_constraintTop_toTopOf="@id/rating_bar" />
 
         <com.google.android.material.button.MaterialButton
@@ -77,33 +104,71 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/md_theme_background"
+            android:elevation="3dp"
             android:text="Enviar..."
             android:textColor="@color/md_theme_primary"
             app:cornerRadius="5dp"
-            android:elevation="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/user_name"
             app:strokeColor="@color/md_theme_primary" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
+            android:backgroundTint="@color/md_theme_inversePrimary"
             android:lineHeight="0dp"
-            app:icon="@drawable/checkroom"
-            app:iconTint="@color/md_theme_primary"
-            android:text="Anuncios frecuentes"
             android:padding="@dimen/padding_small"
-            android:textSize="12sp"
-            app:iconGravity="textStart"
+            android:text="Anuncios frecuentes"
             android:textAlignment="center"
             android:textColor="@color/md_theme_primary"
-            android:backgroundTint="@color/md_theme_inversePrimary"
-            app:layout_constraintTop_toBottomOf="@id/rating_bar"
-            app:layout_constraintStart_toStartOf="@id/user_name"
+            android:textSize="10sp"
+            app:icon="@drawable/checkroom"
+            app:iconGravity="textStart"
+            app:iconTint="@color/md_theme_primary"
             app:layout_constraintEnd_toEndOf="@+id/rated_times"
-
-            />
+            app:layout_constraintStart_toStartOf="@id/user_name"
+            app:layout_constraintTop_toBottomOf="@id/rating_bar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/toolbar_layout" />
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerInsetEnd="16dp"
+        app:dividerInsetStart="16dp" />
+
+    <!-- slipper title -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/title_info_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/slipper_title"
+            style="@style/style_slipper_title"
+            android:text="@string/string_slipper_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/slipper_number"
+            style="@style/style_slipper_number"
+            android:text="@string/string_slipper_number"
+            app:layout_constraintStart_toStartOf="@+id/slipper_title"
+            app:layout_constraintTop_toBottomOf="@+id/slipper_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/slipper_state"
+            style="@style/style_slipper_state"
+            android:text="@string/string_slipper_state"
+            app:layout_constraintStart_toEndOf="@+id/slipper_number"
+            app:layout_constraintTop_toBottomOf="@id/slipper_title" />
+
+        <TextView
+            android:id="@+id/slipper_link_el_ganso"
+            style="@style/style_link_el_ganso"
+            android:text="@string/string_link_el_ganso"
+            app:layout_constraintStart_toEndOf="@+id/slipper_state"
+            app:layout_constraintTop_toBottomOf="@id/slipper_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

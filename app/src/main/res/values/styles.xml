@@ -6,13 +6,20 @@
         <item name="android:background">@color/md_theme_onPrimary</item>
     </style>
 
+    <!-- style for the app bar -->
+    <style name="style_red_item_menu_more" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/md_theme_error</item>
+    </style>
+
+
+    <!-- style for seller info -->
     <style name="style_seller_info_layout">
-        <item name="android:padding">@dimen/padding</item>
+        <item name="android:padding">@dimen/padding_small</item>
     </style>
 
     <style name="style_user_image">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
     </style>
 
     <style name="style_user_image_shape">
@@ -25,16 +32,48 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
     <style name="style_rating_bar" parent="Widget.AppCompat.RatingBar">
         <item name="android:numStars">5</item>
         <item name="android:rating">3.5</item>
         <item name="android:stepSize">0.5</item>
-        <item name="android:scaleX">0.5</item>
-        <item name="android:scaleY">0.5</item>
+        <item name="android:scaleX">0.4</item>
+        <item name="android:scaleY">0.4</item>
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
         <item name="android:isIndicator">false</item>
     </style>
+
+    <style name="style_slipper_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+    </style>
+
+    <style name="style_slipper_number">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+    </style>
+
+    <style name="style_slipper_state">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+    </style>
+
+    <style name="style_link_el_ganso">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:textColor">@color/indicator_selected</item>
+    </style>
+
 </resources>
