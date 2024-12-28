@@ -1,14 +1,54 @@
 <resources>
     <string name="app_name">DDItarea7</string>
+
+    <!-- More options menu -->
+    <string name="button_back">Volver</string>
+    <string name="string_report">Denunciar</string>
+    <string name="string_share">Compartir</string>
+
+    <!-- Slipper images -->
     <string name="string_slipper_image">Slipper Image</string>
+
+    <!-- Slipper title -->
     <string name="string_user_name">xxxUserNamexxx</string>
     <string name="string_slipper_title">Zapatillas El Ganso Verdes Talla 43 \nNuevas!!</string>
     <string name="string_slipper_number">43 ·&#160;</string>
     <string name="string_slipper_state">Nuevo con etiquetas ·&#160;</string>
     <string name="string_link_el_ganso"><u>EL GANSO</u></string>
+    <string name="string_price">65,00 €</string>
+    <string name="string_price_protection">68,95 € Protección al comprador incluída</string>
 
-    <!-- More options menu -->
-    <string name="string_report">Denunciar</string>
-    <string name="string_share">Compartir</string>
+    <!-- Slipper description -->
+    <string name="string_description_title">Descripción</string>
+    <string name="string_description_content">
+        ¿Quién dice que los pies de los más pequeños no merecen una gran amortiguación?
+        Nosotros creemos lo contrario. Estas zapatillas cómodas integran la legendaria tecnología Tuned Air,
+        brindando una experiencia excepcional. Inspiradas en el diseño original de las Air Max Plus,
+        con detalles como la cola de ballena cerca de la parte inferior, destacan por sus alegres toques
+        de color que las hacen perfectas para jugar y divertirse.\n\n La parte superior está fabricada con un tejido ligero y transpirable que asegura comodidad
+        durante todo el día. La amortiguación Max Air, presente tanto en el talón como en el antepié,
+        proporciona una pisada suave y un confort ideal para cualquier actividad. Su diseño único incluye
+        un puente de plástico grande cerca de la mediasuela, inspirado en la cola de una ballena,
+        que lleva el estilo playero a la ciudad, mientras que los dedos ondulados superpuestos rinden homenaje
+        a las palmeras y las olas del océano.\n\n Además, cuentan con una puntera de plástico que añade durabilidad y un toque de brillo,
+        ideal para resistir el uso diario. La suela de goma presenta un patrón gráfico que garantiza
+        una tracción duradera, permitiendo saltar y jugar con total libertad. Las ranuras en la suela exterior
+        están diseñadas para añadir flexibilidad y asegurar movimientos naturales en cada pisada.
+        Como detalle adicional, incluyen elementos reflectantes que combinan funcionalidad y estilo,
+        haciendo de estas zapatillas la elección perfecta para los más pequeños.\n</string>
+    <string name="string_expand_text"><u>Más...</u></string>
+    <string name="string_contract_text"><u>Menos...</u></string>
 
+    <!-- details layout -->
+    <string name="string_star_closet">Distintivo Armario estrella</string>
+    <string name="string_star_closet_description">Concedido a vendedores que suben artículos con frecuencia</string>
+    <string name="string_tax_protection">Tasa de protección al comprador</string>
+    <string name="string_tax_protection_description">Nuestra <u><font color="#4F2AB8">protección al comprador</font></u>
+        implica una tasa que se añade a las compras realizadas a través del botón "Comprar".
+        Esta protección incluye la <u><font color="#4F2AB8">política de reembolso</font></u>.
+    </string>
+
+    <!-- delivery -->
+    <string name="string_delivery_title">Envío</string>
+    <string name="string_delivery_amount">Desde 0,00 €</string>
 </resources>

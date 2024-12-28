@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- style for the main layout -->
     <style name="style_main">
-        <item name="android:padding">@dimen/padding_small</item>
-        <item name="android:background">@color/md_theme_onPrimary</item>
+        <item name="android:background">@color/md_theme_surfaceDim</item>
     </style>
 
     <!-- style for the pop up menu -->
@@ -11,14 +11,11 @@
         <item name="android:textColor">@color/md_theme_error</item>
     </style>
 
-    <!-- style for image indicator -->
-
-
-
     <!-- style for seller info -->
     <style name="style_seller_info_layout">
         <item name="android:padding">@dimen/padding_small</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
     </style>
 
     <style name="style_user_image">
@@ -39,7 +36,6 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <!-- style for rating bar -->
     <style name="style_rating_bar" parent="Widget.AppCompat.RatingBar">
         <item name="android:numStars">5</item>
         <item name="android:rating">3.5</item>
@@ -48,6 +44,12 @@
         <item name="android:scaleY">0.4</item>
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
         <item name="android:isIndicator">false</item>
+    </style>
+
+    <!-- style for the slipper info -->
+    <style name="style_slipper_info_layout">
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
     </style>
 
     <style name="style_slipper_title">
@@ -81,4 +83,110 @@
         <item name="android:textColor">@color/indicator_selected</item>
     </style>
 
+    <style name="style_slipper_price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+    </style>
+
+    <style name="style_slipper_price_protection">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/indicator_selected</item>
+    </style>
+
+    <!-- style for description layout -->
+    <style name="style_description_container">
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="style_description_title">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#88000000</item>
+    </style>
+
+    <style name="style_description_content">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- style for details layout -->
+    <style name="style_details_container">
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="style_distinctive_icon">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+    </style>
+
+    <style name="style_distinctive_icon_shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="style_details_closet_star_title">
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_details_closet_star_description">
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- style for tax protection layout -->
+    <style name="tax_protection_container">
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="style_tax_protection_icon">
+        <item name="android:layout_width">55dp</item>
+        <item name="android:layout_height">55dp</item>
+    </style>
+
+    <style name="style_tax_protection_shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="style_details_tax_protection_title">
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_details_tax_protection_description">
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- style for delivery layout -->
+    <style name="style_delivery_container">
+        <item name="android:paddingTop">@dimen/padding</item>
+        <item name="android:paddingRight">@dimen/padding_small</item>
+        <item name="android:paddingBottom">@dimen/padding</item>
+        <item name="android:paddingLeft">@dimen/padding_small</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+    <style name="style_delivery_title">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_delivery_amount">
+        <item name="android:layout_marginStart">@dimen/margin</item>
+        <item name="android:textSize">17sp</item>
+    </style>
 </resources>

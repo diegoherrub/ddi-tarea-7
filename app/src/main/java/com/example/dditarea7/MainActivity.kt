@@ -1,8 +1,10 @@
 package com.example.dditarea7
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.MenuInflater
@@ -11,6 +13,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.PopupMenu
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +27,8 @@ import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.FullScreenCarouselStrategy
 
 class MainActivity : AppCompatActivity() {
+
+    private var isDescriptionExpanded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +76,22 @@ class MainActivity : AppCompatActivity() {
             popupMenu.show()
         }
 
+        // Configurate the toolbar for change display
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        val scrollView = findViewById<ScrollView>(R.id.main)
+        scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            // Altura máxima para que la Toolbar sea totalmente opaca
+            val maxScroll = 450 // Ajusta este valor según el diseño
+            // Calcula el porcentaje de desplazamiento
+            val alpha = if (scrollY < maxScroll) {
+                scrollY.toFloat() / maxScroll
+            } else {
+                1f
+            }
+            // Actualiza el color de fondo de la Toolbar con el alpha calculado
+            toolbar.setBackgroundColor(adjustAlpha(getColor(R.color.md_theme_primary), alpha))
+        }
+
         // Instancio las imágenes
         var localMockImages = LocalMockImages().get()
 
@@ -104,7 +125,6 @@ class MainActivity : AppCompatActivity() {
         likeButton.setIconResource(R.drawable.favorite_line)
         likeButton.iconTint = getColorStateList(R.color.indicator_orange) // Asegura el color naranja
 
-
         // Inicializa el contador obteniendo el texto actual del botón (si tiene un número)
         likeButton.setOnClickListener {
             // Alternar el estado de "me gusta"
@@ -122,6 +142,24 @@ class MainActivity : AppCompatActivity() {
 
             likeButton.text = likeCount.toString() // Actualiza el texto del botón directamente
         }
+
+        // Set up expand description button
+        val descriptionContent: TextView = findViewById(R.id.description_content)
+        val expandText: TextView = findViewById(R.id.expand_text)
+        expandText.setOnClickListener {
+            if (isDescriptionExpanded) {
+                descriptionContent.maxLines = 2
+                descriptionContent.ellipsize = TextUtils.TruncateAt.END
+                expandText.text = getString(R.string.string_expand_text)
+            } else {
+                descriptionContent.maxLines = Int.MAX_VALUE
+                descriptionContent.ellipsize = null
+                expandText.text = getString(R.string.string_contract_text)
+            }
+            isDescriptionExpanded = !isDescriptionExpanded
+        }
+
+
     }
 
     // functions for the menu more
@@ -164,6 +202,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
+    private fun adjustAlpha(color: Int, factor: Float): Int {
+        val alpha = (255 * factor).toInt()
+        val red = Color.red(color)
+        val green = Color.green(color)
+        val blue = Color.blue(color)
+        return Color.argb(alpha, red, green, blue)
+    }
 }

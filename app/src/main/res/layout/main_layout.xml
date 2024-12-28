@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- carousel layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,6 +19,7 @@
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="horizontal"
+            android:paddingTop="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -50,34 +52,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:strokeColor="@color/md_theme_primary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- carousel layout -->
-    <Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:padding="@dimen/padding">
-
-        <!-- android:background="@color/md_theme_secondaryContainer" -->
-
-        <ImageButton
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/arrow_back_24dp" />
-
-        <ImageButton
-            android:id="@+id/button_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="@dimen/margin"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/more_vert_24dp" />
-    </Toolbar>
-
 
     <!-- seller info layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,12 +134,13 @@
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:dividerInsetEnd="16dp"
-        app:dividerInsetStart="16dp" />
+        app:dividerInsetEnd="0dp"
+        app:dividerInsetStart="0dp" />
 
     <!-- slipper title -->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/title_info_layout"
+        android:id="@+id/slipper_info_layout"
+        style="@style/style_slipper_info_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -196,6 +171,184 @@
             android:text="@string/string_link_el_ganso"
             app:layout_constraintStart_toEndOf="@+id/slipper_state"
             app:layout_constraintTop_toBottomOf="@id/slipper_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/slipper_price"
+            style="@style/style_slipper_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_price"
+            app:layout_constraintStart_toStartOf="@+id/slipper_number"
+            app:layout_constraintTop_toBottomOf="@id/slipper_number" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/price_protection"
+            style="@style/style_slipper_price_protection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_price_protection"
+            app:layout_constraintStart_toStartOf="@id/slipper_price"
+            app:layout_constraintTop_toBottomOf="@id/slipper_price" />
+
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/verified_user"
+            android:contentDescription="@string/button_back"
+            app:layout_constraintStart_toEndOf="@id/price_protection"
+            app:layout_constraintTop_toTopOf="@id/price_protection"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- Description layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/description_container"
+        style="@style/style_description_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_title"
+            style="@style/style_description_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_description_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/description_content"
+            style="@style/style_description_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/margin"
+            android:text="@string/string_description_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_title" />
+
+        <TextView
+            android:id="@+id/expand_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_expand_text"
+            android:textColor="@color/indicator_selected"
+            android:clickable="true"
+            android:focusable="true"
+            android:textSize="16sp"
+            android:gravity="start"
+            android:layout_marginTop="@dimen/margin_small"
+            app:layout_constraintTop_toBottomOf="@id/description_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- details layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/details_container"
+        style="@style/style_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/distinctive_icon"
+            style="@style/style_distinctive_icon"
+            android:src="@drawable/checkroom"
+            android:background="@color/md_theme_inversePrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/style_distinctive_icon_shape" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/details_closet_star_title"
+            style="@style/style_details_closet_star_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_star_closet"
+            app:layout_constraintStart_toEndOf="@id/distinctive_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/details_closet_star_description"
+            style="@style/style_details_closet_star_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_star_closet_description"
+            app:layout_constraintStart_toEndOf="@id/distinctive_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_closet_star_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- tax protection layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tax_protection_container"
+        style="@style/style_details_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tax_protection_icon"
+            style="@style/style_tax_protection_icon"
+            android:src="@drawable/verified_user"
+            android:tint="@color/md_theme_primary"
+            android:background="@color/md_theme_inversePrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/style_tax_protection_shape" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/details_tax_protection_title"
+            style="@style/style_details_tax_protection_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_star_closet"
+            app:layout_constraintStart_toEndOf="@id/tax_protection_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/details_tax_protection_description"
+            style="@style/style_details_tax_protection_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_tax_protection_description"
+            app:layout_constraintStart_toEndOf="@id/tax_protection_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_tax_protection_title" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- delivery -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/delivery_container"
+        style="@style/style_delivery_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/delivery_title"
+            style="@style/style_delivery_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_delivery_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/delivery_amount"
+            style="@style/style_delivery_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/string_delivery_amount"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
