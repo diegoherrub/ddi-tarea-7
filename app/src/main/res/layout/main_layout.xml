@@ -1,16 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/carousel_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/carousel_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            app:layout_constraintBottom_toBottomOf="@id/carousel_recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- counter likes -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_like"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin"
+            android:backgroundTint="@color/md_theme_background"
+            android:drawableStart="@drawable/favorite_line"
+            android:elevation="0dp"
+            android:text="122"
+            android:textColor="@color/indicator_orange"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toTopOf="@id/carousel_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:strokeColor="@color/md_theme_primary" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- carousel layout -->
     <Toolbar
-        android:padding="@dimen/padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent" >
+        android:background="@android:color/transparent"
+        android:padding="@dimen/padding">
 
         <!-- android:background="@color/md_theme_secondaryContainer" -->
 
@@ -32,27 +78,6 @@
             android:src="@drawable/more_vert_24dp" />
     </Toolbar>
 
-    <!-- carousel layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/carousel_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/carousel_indicator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding"
-        app:layout_constraintBottom_toBottomOf="@+id/carousel_recycler_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- seller info layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -100,6 +125,7 @@
             app:layout_constraintTop_toTopOf="@id/rating_bar" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_send"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,7 +136,8 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/user_name"
-            app:strokeColor="@color/md_theme_primary" />
+            app:strokeColor="@color/md_theme_primary"
+            tools:ignore="InvalidId" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="0dp"

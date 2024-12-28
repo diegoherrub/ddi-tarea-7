@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.MenuInflater
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.PopupMenu
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
@@ -16,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dditarea7.data.local.LocalMockImages
 import com.example.dditarea7.app.findCenterView
 import com.example.dditarea7.presentation.ImageAdapter
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.FullScreenCarouselStrategy
 
@@ -29,10 +33,6 @@ class MainActivity : AppCompatActivity() {
         val buttonMore = findViewById<ImageButton>(R.id.button_more)
         buttonMore.setOnClickListener { view ->
 
-            // Apply the custom style to the popup menu
-            // val contextThemeWrapper = ContextThemeWrapper(this, R.style.style_red_item_menu_more)
-            // val popupMenu = PopupMenu(contextThemeWrapper, view)
-
             // Create the popup menu
             val popupMenu = PopupMenu(this, view)
             val inflater: MenuInflater = popupMenu.menuInflater
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             val menuItemReport = popupMenu.menu.findItem(R.id.action_report)
             val spannableTitle = SpannableString(menuItemReport.title)
             spannableTitle.setSpan(
-                ForegroundColorSpan(getColor(R.color.md_theme_error)), // Set the text color
+                ForegroundColorSpan(getColor(R.color.md_theme_error)),
                 0,
                 spannableTitle.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -71,7 +71,6 @@ class MainActivity : AppCompatActivity() {
             popupMenu.show()
         }
 
-
         // Instancio las imágenes
         var localMockImages = LocalMockImages().get()
 
@@ -96,7 +95,44 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        // Set up the like button
+        val likeButton: MaterialButton = findViewById(R.id.button_like)
+        var isLiked = false
+        var likeCount = likeButton.text.toString().toIntOrNull() ?: 0
 
+        // Configura el ícono inicial como línea (corazón vacío)
+        likeButton.setIconResource(R.drawable.favorite_line)
+        likeButton.iconTint = getColorStateList(R.color.indicator_orange) // Asegura el color naranja
+
+
+        // Inicializa el contador obteniendo el texto actual del botón (si tiene un número)
+        likeButton.setOnClickListener {
+            // Alternar el estado de "me gusta"
+            isLiked = !isLiked
+
+            if (isLiked) {
+                likeCount++
+                likeButton.setIconResource(R.drawable.favorite_filled)
+                likeButton.iconTint = getColorStateList(R.color.indicator_orange)
+            } else {
+                likeCount--
+                likeButton.setIconResource(R.drawable.favorite_line)
+                likeButton.iconTint = getColorStateList(R.color.indicator_orange)
+            }
+
+            likeButton.text = likeCount.toString() // Actualiza el texto del botón directamente
+        }
+    }
+
+    // functions for the menu more
+    private fun handleReportAction() {
+        // Handle report action
+        Toast.makeText(this, "Option Report clicked", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun handleShareAction() {
+        // Handle share action
+        Toast.makeText(this, "Option Share clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun setupIndicators(count: Int) {
@@ -128,15 +164,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // functions for the menu more
-    private fun handleReportAction() {
-        // Handle report action
-        Toast.makeText(this, "Option Report clicked", Toast.LENGTH_SHORT).show()
-    }
 
-    private fun handleShareAction() {
-        // Handle share action
-        Toast.makeText(this, "Option Share clicked", Toast.LENGTH_SHORT).show()
-    }
 
 }
