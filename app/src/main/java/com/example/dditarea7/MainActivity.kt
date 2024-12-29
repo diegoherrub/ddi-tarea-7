@@ -116,20 +116,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // Set up the like button
+        // Set up like button
         val likeButton: MaterialButton = findViewById(R.id.button_like)
         var isLiked = false
         var likeCount = likeButton.text.toString().toIntOrNull() ?: 0
 
-        // Configura el ícono inicial como línea (corazón vacío)
         likeButton.setIconResource(R.drawable.favorite_line)
-        likeButton.iconTint = getColorStateList(R.color.indicator_orange) // Asegura el color naranja
-
-        // Inicializa el contador obteniendo el texto actual del botón (si tiene un número)
+        likeButton.iconTint = getColorStateList(R.color.indicator_orange)
         likeButton.setOnClickListener {
-            // Alternar el estado de "me gusta"
             isLiked = !isLiked
-
             if (isLiked) {
                 likeCount++
                 likeButton.setIconResource(R.drawable.favorite_filled)
@@ -141,6 +136,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             likeButton.text = likeCount.toString() // Actualiza el texto del botón directamente
+        }
+
+        // Send Button Toast
+        val sendButton: MaterialButton = findViewById(R.id.button_send)
+        sendButton.setOnClickListener{
+            Toast.makeText(this, "Send clicked", Toast.LENGTH_SHORT).show()
         }
 
         // Set up expand description button
@@ -159,7 +160,17 @@ class MainActivity : AppCompatActivity() {
             isDescriptionExpanded = !isDescriptionExpanded
         }
 
+        // Set up make offer button
+        val makeOfferButton: MaterialButton = findViewById(R.id.button_make_an_offer)
+        makeOfferButton.setOnClickListener {
+            Toast.makeText(this, "Make offer clicked", Toast.LENGTH_SHORT).show()
+        }
 
+        // Set up buy button
+        val buyButton: MaterialButton = findViewById(R.id.button_buy)
+        buyButton.setOnClickListener {
+            Toast.makeText(this, "Buy clicked", Toast.LENGTH_SHORT).show()
+        }
     }
 
     // functions for the menu more
