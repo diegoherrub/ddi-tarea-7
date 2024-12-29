@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dditarea7.R
 
 /**
- * Adapter class for displaying a list of images in a RecyclerView.
+ * Adapter class for displaying a list of images in the RecyclerView.
  *
- * This adapter binds a list of drawable resource IDs to a RecyclerView, inflating a specified layout
+ * This adapter binds a list of drawable resource IDs to the RecyclerView, inflating a specified layout
  * for each image and setting its corresponding resource.
  *
  * @param imageResIds The list of drawable resource IDs to be displayed in the RecyclerView.
@@ -22,7 +22,7 @@ class ImageAdapter(
      *
      * @param parent The parent ViewGroup into which the new view will be added after it is bound to
      * an adapter position.
-     * @param viewType The type of the new view. This is useful for multiple view types in a RecyclerView.
+     * @param viewType The type of the new view.
      * @return A new instance of ImageViewHolder for the inflated layout.
      */
     override fun onCreateViewHolder(

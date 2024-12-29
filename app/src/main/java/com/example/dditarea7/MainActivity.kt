@@ -19,95 +19,107 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.carousel.FullScreenCarouselStrategy
 
-/**
- * Main activity that serves as the entry point of the application.
- *
- * This activity handles the initialization and interaction of various UI components,
- * including a toolbar, a carousel with indicators, buttons, and expandable content.
- */
 class MainActivity : AppCompatActivity() {
+
+    // Toolbar components
+    private lateinit var toolBar: Toolbar
+    private lateinit var toolBarButtonBack: ImageButton
+    private lateinit var toolBarTitle: TextView
+    private lateinit var toolBarButtonMore: ImageButton
+
+    // Scroll View
+    private lateinit var scrollView: ScrollView
+
+    // Carousel components
+    private lateinit var localMockImages: List<Int>
+    private lateinit var carouselRecyclerView: RecyclerView
+    private lateinit var adapter: ImageAdapter
+    private lateinit var sendButton: MaterialButton
 
     // Flag to manage the description expansion state
     private var isDescriptionExpanded = false
 
-    /**
-     * Called when the activity is starting. This method initializes the UI components
-     * and sets up event listeners.
-     *
-     * @param savedInstanceState If the activity is being re-initialized after previously
-     * being shut down, this Bundle contains the data it most recently supplied.
-     */
+    // Bottom action buttons
+    private lateinit var makeOfferButton: MaterialButton
+    private lateinit var buyButton: MaterialButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Configure "More" menu button
-        val buttonMore = findViewById<ImageButton>(R.id.button_more)
-        buttonMore.setOnClickListener { view -> setupPopupMenu(view) }
+        setUpToolBar()
+        scrollView = findViewById(R.id.main)
+        setupCarousel()
 
-        // Configure "Back" button
-        val buttonBack = findViewById<ImageButton>(R.id.button_back)
-        buttonBack.setOnClickListener {
+        configureToolbar(scrollView, toolBar, toolBarButtonBack, toolBarButtonMore, toolBarTitle)
+
+        setupLikeButton()
+        setupExpandableDescription()
+        setUpBottomButtons()
+    }
+
+    /**
+     * Sets up the toolbar and its components (Back and More buttons).
+     */
+    private fun setUpToolBar() {
+        toolBar = findViewById(R.id.toolbar)
+        toolBarButtonBack = findViewById(R.id.button_back)
+        toolBarTitle = findViewById(R.id.toolbar_title)
+        toolBarButtonMore = findViewById(R.id.button_more)
+
+        toolBarButtonBack.setOnClickListener {
             Toast.makeText(this, "Back clicked", Toast.LENGTH_SHORT).show()
         }
-
-        val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        val scrollView = findViewById<ScrollView>(R.id.main)
-
-        // Configure toolbar color and icon behavior based on scroll position
-        configureToolbar(scrollView, toolbar, buttonBack, buttonMore, toolbarTitle)
-
-        // Initialize mock images
-        val localMockImages = LocalMockImages().get()
-
-        // Set up the RecyclerView with carousel
-        val carouselRecyclerView: RecyclerView = findViewById(R.id.carousel_recycler_view)
-        val adapter = ImageAdapter(localMockImages)
-        carouselRecyclerView.adapter = adapter
-        carouselRecyclerView.layoutManager = CarouselLayoutManager(FullScreenCarouselStrategy())
-
-        setupIndicators(localMockImages.size)
-        updateIndicators(0)
-
-        // Listen for carousel scroll changes
-        carouselRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as CarouselLayoutManager
-                val centerView = layoutManager.findCenterView()
-                val position = centerView?.let { layoutManager.getPosition(it) } ?: return
-                updateIndicators(position)
-            }
-        })
-
-        // Configure the "Like" button
-        setupLikeButton()
-
-        // Configure the "Send" button
-        val sendButton: MaterialButton = findViewById(R.id.button_send)
-        sendButton.setOnClickListener {
-            Toast.makeText(this, "Send clicked", Toast.LENGTH_SHORT).show()
-        }
-
-        // Configure expandable description content
-        setupExpandableDescription()
-
-        // Configure the "Make Offer" button
-        val makeOfferButton: MaterialButton = findViewById(R.id.button_make_an_offer)
-        makeOfferButton.setOnClickListener {
-            Toast.makeText(this, "Make offer clicked", Toast.LENGTH_SHORT).show()
-        }
-
-        // Configure the "Buy" button
-        val buyButton: MaterialButton = findViewById(R.id.button_buy)
-        buyButton.setOnClickListener {
-            Toast.makeText(this, "Buy clicked", Toast.LENGTH_SHORT).show()
+        toolBarButtonMore.setOnClickListener { view ->
+            setupPopupMenu(view)
         }
     }
 
     /**
-     * Configures the popup menu for the "More" button.
+     * Configures the behavior of the toolbar during scrolling.
+     *
+     * @param scrollView The main scrollable container.
+     * @param toolbar The toolbar whose appearance is modified.
+     * @param buttonBack The back button in the toolbar.
+     * @param buttonMore The more options button in the toolbar.
+     * @param toolbarTitle The title displayed in the toolbar.
+     */
+    private fun configureToolbar(
+        scrollView: ScrollView,
+        toolbar: Toolbar,
+        buttonBack: ImageButton,
+        buttonMore: ImageButton,
+        toolbarTitle: TextView
+    ) {
+        scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            val maxScroll = 450
+            val alpha = if (scrollY < maxScroll) scrollY.toFloat() / maxScroll else 1f
+
+            // Adjust toolbar background and icon colors
+            toolbar.setBackgroundColor(
+                adjustAlpha(
+                    getColor(R.color.md_theme_primaryContainer),
+                    alpha
+                )
+            )
+            val iconColor = interpolateColor(
+                getColor(R.color.icon_initial_color_buttons_toolbar),
+                getColor(R.color.icon_final_color_buttons_toolbar),
+                alpha
+            )
+            val titleColor = interpolateColor(
+                getColor(R.color.title_initial_color_toolbar),
+                getColor(R.color.title_final_color_toolbar),
+                alpha
+            )
+            buttonBack.setColorFilter(iconColor)
+            buttonMore.setColorFilter(iconColor)
+            toolbarTitle.setTextColor(titleColor)
+        }
+    }
+
+    /**
+     * Sets up the popup menu for the "More" button.
      *
      * @param view The view to anchor the popup menu.
      */
@@ -131,13 +143,15 @@ class MainActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.action_report -> {
-                    handleReportAction()
+                    Toast.makeText(this, "Option Report clicked", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 R.id.action_share -> {
-                    handleShareAction()
+                    Toast.makeText(this, "Option Share clicked", Toast.LENGTH_SHORT).show()
                     true
                 }
+
                 else -> false
             }
         }
@@ -145,47 +159,95 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Handles the "Report" action.
+     * Adjusts the alpha value of a color.
+     *
+     * @param color The original color.
+     * @param factor The alpha factor (0 to 1).
+     * @return The adjusted color.
      */
-    private fun handleReportAction() {
-        Toast.makeText(this, "Option Report clicked", Toast.LENGTH_SHORT).show()
+    private fun adjustAlpha(color: Int, factor: Float): Int {
+        val alpha = (255 * factor).toInt()
+        return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color))
     }
 
     /**
-     * Handles the "Share" action.
+     * Interpolates between two colors based on a factor.
+     *
+     * @param startColor The starting color.
+     * @param endColor The ending color.
+     * @param factor The interpolation factor (0 to 1).
+     * @return The interpolated color.
      */
-    private fun handleShareAction() {
-        Toast.makeText(this, "Option Share clicked", Toast.LENGTH_SHORT).show()
+    private fun interpolateColor(startColor: Int, endColor: Int, factor: Float): Int {
+        return Color.argb(
+            (Color.alpha(startColor) + factor * (Color.alpha(endColor) - Color.alpha(startColor))).toInt(),
+            (Color.red(startColor) + factor * (Color.red(endColor) - Color.red(startColor))).toInt(),
+            (Color.green(startColor) + factor * (Color.green(endColor) - Color.green(startColor))).toInt(),
+            (Color.blue(startColor) + factor * (Color.blue(endColor) - Color.blue(startColor))).toInt()
+        )
     }
 
     /**
-     * Configures the behavior of the toolbar during scrolling.
+     * Sets up the carousel RecyclerView with images and indicators.
      */
-    private fun configureToolbar(
-        scrollView: ScrollView,
-        toolbar: Toolbar,
-        buttonBack: ImageButton,
-        buttonMore: ImageButton,
-        toolbarTitle: TextView
-    ) {
-        scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-            val maxScroll = 450
-            val alpha = if (scrollY < maxScroll) scrollY.toFloat() / maxScroll else 1f
+    private fun setupCarousel() {
+        localMockImages = LocalMockImages().get()
+        carouselRecyclerView = findViewById(R.id.carousel_recycler_view)
+        adapter = ImageAdapter(localMockImages)
+        sendButton = findViewById(R.id.button_send)
 
-            toolbar.setBackgroundColor(adjustAlpha(getColor(R.color.md_theme_primaryContainer), alpha))
-            val iconColor = interpolateColor(
-                getColor(R.color.icon_initial_color_buttons_toolbar),
-                getColor(R.color.icon_final_color_buttons_toolbar),
-                alpha
+        carouselRecyclerView.adapter = adapter
+        carouselRecyclerView.layoutManager = CarouselLayoutManager(FullScreenCarouselStrategy())
+        setupIndicators(localMockImages.size)
+        updateIndicators(0)
+
+        carouselRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val layoutManager = recyclerView.layoutManager as CarouselLayoutManager
+                val centerView = layoutManager.findCenterView()
+                val position = centerView?.let { layoutManager.getPosition(it) } ?: return
+                updateIndicators(position)
+            }
+        })
+
+        sendButton.setOnClickListener {
+            Toast.makeText(this, "Send clicked", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    /**
+     * Initializes the indicators for the carousel.
+     *
+     * @param count The total number of indicators to create.
+     */
+    private fun setupIndicators(count: Int) {
+        val indicatorContainer = findViewById<LinearLayout>(R.id.carousel_indicator)
+        indicatorContainer.removeAllViews()
+        for (i in 0 until count) {
+            val indicator = View(this).apply {
+                layoutParams = LinearLayout.LayoutParams(20, 20).apply {
+                    marginEnd = 16
+                }
+                setBackgroundResource(R.drawable.indicator_unselected)
+            }
+            indicatorContainer.addView(indicator)
+        }
+    }
+
+    /**
+     * Updates the indicators based on the selected position in the carousel.
+     *
+     * @param selectedPosition The currently selected position.
+     */
+    private fun updateIndicators(selectedPosition: Int) {
+        val indicatorContainer = findViewById<LinearLayout>(R.id.carousel_indicator)
+        for (i in 0 until indicatorContainer.childCount) {
+            val indicator = indicatorContainer.getChildAt(i)
+            val isActive = i == selectedPosition
+            indicator.setBackgroundResource(
+                if (isActive) R.drawable.indicator_selected else R.drawable.indicator_unselected
             )
-            val titleColor = interpolateColor(
-                getColor(R.color.title_initial_color_toolbar),
-                getColor(R.color.title_final_color_toolbar),
-                alpha
-            )
-            buttonBack.setColorFilter(iconColor)
-            buttonMore.setColorFilter(iconColor)
-            toolbarTitle.setTextColor(titleColor)
         }
     }
 
@@ -229,66 +291,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Initializes the indicators for the carousel.
-     *
-     * @param count The total number of indicators to create.
+     * Sets up the bottom action buttons ("Make Offer" and "Buy").
      */
-    private fun setupIndicators(count: Int) {
-        val indicatorContainer = findViewById<LinearLayout>(R.id.carousel_indicator)
-        indicatorContainer.removeAllViews()
-        for (i in 0 until count) {
-            val indicator = View(this).apply {
-                layoutParams = LinearLayout.LayoutParams(20, 20).apply {
-                    marginEnd = 16
-                }
-                setBackgroundResource(R.drawable.indicator_unselected)
-            }
-            indicatorContainer.addView(indicator)
+    private fun setUpBottomButtons() {
+        makeOfferButton = findViewById(R.id.button_make_an_offer)
+        buyButton = findViewById(R.id.button_buy)
+
+        makeOfferButton.setOnClickListener {
+            Toast.makeText(this, "Make offer clicked", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    /**
-     * Updates the indicators based on the selected position in the carousel.
-     *
-     * @param selectedPosition The currently selected position.
-     */
-    private fun updateIndicators(selectedPosition: Int) {
-        val indicatorContainer = findViewById<LinearLayout>(R.id.carousel_indicator)
-        for (i in 0 until indicatorContainer.childCount) {
-            val indicator = indicatorContainer.getChildAt(i)
-            val isActive = i == selectedPosition
-            indicator.setBackgroundResource(
-                if (isActive) R.drawable.indicator_selected else R.drawable.indicator_unselected
-            )
+        buyButton.setOnClickListener {
+            Toast.makeText(this, "Buy clicked", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    /**
-     * Adjusts the alpha value of a color.
-     *
-     * @param color The original color.
-     * @param factor The alpha factor (0 to 1).
-     * @return The adjusted color.
-     */
-    private fun adjustAlpha(color: Int, factor: Float): Int {
-        val alpha = (255 * factor).toInt()
-        return Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color))
-    }
-
-    /**
-     * Interpolates between two colors based on a factor.
-     *
-     * @param startColor The starting color.
-     * @param endColor The ending color.
-     * @param factor The interpolation factor (0 to 1).
-     * @return The interpolated color.
-     */
-    private fun interpolateColor(startColor: Int, endColor: Int, factor: Float): Int {
-        return Color.argb(
-            (Color.alpha(startColor) + factor * (Color.alpha(endColor) - Color.alpha(startColor))).toInt(),
-            (Color.red(startColor) + factor * (Color.red(endColor) - Color.red(startColor))).toInt(),
-            (Color.green(startColor) + factor * (Color.green(endColor) - Color.green(startColor))).toInt(),
-            (Color.blue(startColor) + factor * (Color.blue(endColor) - Color.blue(startColor))).toInt()
-        )
     }
 }

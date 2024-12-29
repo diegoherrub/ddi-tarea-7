@@ -4,9 +4,6 @@ import com.example.dditarea7.R
 
 /**
  * A class that provides a mock list of drawable resource IDs.
- *
- * This is useful for simulating image data in applications, especially for testing or
- * initial setup when real data may not yet be available.
  */
 class LocalMockImages {
 

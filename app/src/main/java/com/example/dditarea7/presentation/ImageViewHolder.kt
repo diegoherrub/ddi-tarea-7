@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dditarea7.R
 
 /**
- * ViewHolder class for binding and displaying an image in a RecyclerView item.
+ * ViewHolder class for binding and displaying the image in the RecyclerView item.
  *
  * This class holds the reference to the `ImageView` in the layout and is responsible for
  * binding the data provided by the adapter to the view.
