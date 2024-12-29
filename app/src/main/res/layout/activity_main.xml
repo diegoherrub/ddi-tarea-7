@@ -10,8 +10,6 @@
     <ScrollView
         android:id="@+id/main"
         style="@style/style_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         tools:context=".MainActivity">
 
         <include layout="@layout/main_layout" />
@@ -20,17 +18,14 @@
     <!-- Bottom Buttons -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottoms_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="bottom"
-        android:background="@color/md_theme_onPrimary">
+        style="@style/style_bottoms_buttons">
 
         <com.google.android.material.divider.MaterialDivider
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/style_divider"
             app:dividerInsetEnd="0dp"
             app:dividerInsetStart="0dp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_make_an_offer"

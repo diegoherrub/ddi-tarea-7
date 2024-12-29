@@ -4,6 +4,8 @@
     <!-- style for the main layout -->
     <style name="style_main">
         <item name="android:background">@color/md_theme_surfaceDim</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
     </style>
 
     <!-- style for the topbar -->
@@ -54,7 +56,7 @@
         <item name="android:drawableStart">@drawable/favorite_line</item>
         <item name="elevation">0dp</item>
         <item name="android:textColor">@color/indicator_orange</item>
-
+        <item name="android:text">@string/string_start_likes</item>
     </style>
 
     <style name="style_divider">
@@ -77,6 +79,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:text">@string/string_slipper_title</item>
     </style>
 
     <style name="style_slipper_number">
@@ -84,6 +87,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:text">@string/string_slipper_number</item>
     </style>
 
     <style name="style_slipper_state">
@@ -91,14 +95,16 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:text">@string/string_slipper_state</item>
     </style>
 
-    <style name="style_link_el_ganso">
+    <style name="style_link_nike_tuned">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
         <item name="android:textColor">@color/indicator_selected</item>
+        <item name="android:text">@string/string_link_nike_tuned</item>
     </style>
 
     <style name="style_slipper_price">
@@ -106,6 +112,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_marginTop">@dimen/margin</item>
+        <item name="android:text">@string/string_price</item>
     </style>
 
     <style name="style_slipper_price_protection">
@@ -113,12 +120,15 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/indicator_selected</item>
+        <item name="android:text">@string/string_price_protection</item>
     </style>
 
     <style name="style_icon_tax_protection">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">start</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:src">@drawable/verified_user</item>
     </style>
 
     <!-- style for seller info -->
@@ -133,6 +143,7 @@
     <style name="style_user_image">
         <item name="android:layout_width">55dp</item>
         <item name="android:layout_height">55dp</item>
+        <item name="android:src">@drawable/user</item>
     </style>
 
     <style name="style_user_image_shape">
@@ -146,6 +157,7 @@
         <item name="android:layout_marginLeft">@dimen/margin_small</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:text">@string/string_user_name</item>
     </style>
 
     <style name="style_rating_bar" parent="Widget.AppCompat.RatingBar">
@@ -166,6 +178,7 @@
         <item name="android:layout_marginEnd">@dimen/margin_medium</item>
         <item name="android:layout_marginBottom">@dimen/margin_xsmall</item>
         <item name="android:textSize">@dimen/text_rated_times</item>
+        <item name="android:text">@string/string_rated_times</item>
     </style>
 
     <style name="style_button_frequent_announcements">
@@ -322,4 +335,14 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/string_delivery_amount</item>
     </style>
+
+    <!-- style for bottom buttons -->
+    <style name="style_bottoms_buttons">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">@color/md_theme_onPrimary</item>
+    </style>
+
+
 </resources>

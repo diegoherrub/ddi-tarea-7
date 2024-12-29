@@ -28,7 +28,6 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_like"
             style="@style/style_button_like"
-            android:text="@string/string_start_likes"
             app:cornerRadius="20dp"
             app:layout_constraintBottom_toTopOf="@id/carousel_indicator"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +43,6 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/user_image"
             style="@style/style_user_image"
-            android:src="@drawable/user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/style_user_image_shape" />
@@ -52,7 +50,6 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/user_name"
             style="@style/style_user_name"
-            android:text="@string/string_user_name"
             app:layout_constraintStart_toEndOf="@+id/user_image"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,7 +63,6 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/rated_times"
             style="@style/style_rated_times"
-            android:text="@string/string_rated_times"
             app:layout_constraintBottom_toBottomOf="@id/rating_bar"
             app:layout_constraintEnd_toEndOf="@id/rating_bar"
             app:layout_constraintStart_toEndOf="@id/user_name"
@@ -110,51 +106,42 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/slipper_title"
             style="@style/style_slipper_title"
-            android:text="@string/string_slipper_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/slipper_number"
             style="@style/style_slipper_number"
-            android:text="@string/string_slipper_number"
             app:layout_constraintStart_toStartOf="@+id/slipper_title"
             app:layout_constraintTop_toBottomOf="@+id/slipper_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/slipper_state"
             style="@style/style_slipper_state"
-            android:text="@string/string_slipper_state"
             app:layout_constraintStart_toEndOf="@+id/slipper_number"
             app:layout_constraintTop_toBottomOf="@id/slipper_title" />
 
         <TextView
             android:id="@+id/slipper_link_el_ganso"
-            style="@style/style_link_el_ganso"
-            android:text="@string/string_link_el_ganso"
+            style="@style/style_link_nike_tuned"
             app:layout_constraintStart_toEndOf="@+id/slipper_state"
             app:layout_constraintTop_toBottomOf="@id/slipper_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/slipper_price"
             style="@style/style_slipper_price"
-            android:text="@string/string_price"
             app:layout_constraintStart_toStartOf="@+id/slipper_number"
             app:layout_constraintTop_toBottomOf="@id/slipper_number" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/price_protection"
             style="@style/style_slipper_price_protection"
-            android:text="@string/string_price_protection"
             app:layout_constraintStart_toStartOf="@id/slipper_price"
             app:layout_constraintTop_toBottomOf="@id/slipper_price" />
 
         <ImageButton
             android:id="@+id/icon_tax_protection"
             style="@style/style_icon_tax_protection"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/verified_user"
-            android:contentDescription="@string/button_back"
             app:layout_constraintStart_toEndOf="@id/price_protection"
             app:layout_constraintTop_toTopOf="@id/price_protection"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
