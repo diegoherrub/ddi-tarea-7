@@ -51,8 +51,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_buy"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin"
             android:layout_marginRight="@dimen/margin"
             android:backgroundTint="@color/md_theme_primary"
@@ -77,22 +77,15 @@
 
         <ImageButton
             android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
+            style="@style/style_button_back"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/arrow_back_24dp"
-            app:tint="@color/icon_initial_color_buttons_toolbar"/>
+            app:tint="@color/icon_initial_color_buttons_toolbar" />
 
         <TextView
             android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Zapatillas Nike Tuned"
-            android:textColor="#00FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/style_toolbar_title"
+            android:text="@string/string_toolbar_title" />
 
         <ImageButton
             android:id="@+id/button_more"
@@ -102,6 +95,6 @@
             android:layout_marginRight="@dimen/margin"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/more_vert_24dp"
-            app:tint="@color/icon_initial_color_buttons_toolbar"/>
+            app:tint="@color/icon_initial_color_buttons_toolbar" />
     </androidx.appcompat.widget.Toolbar>
 </FrameLayout>

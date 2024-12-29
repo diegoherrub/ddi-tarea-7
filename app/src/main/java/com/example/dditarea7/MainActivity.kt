@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
         val expandText: TextView = findViewById(R.id.expand_text)
         expandText.setOnClickListener {
             if (isDescriptionExpanded) {
-                descriptionContent.maxLines = 2
+                descriptionContent.maxLines = 3
                 descriptionContent.ellipsize = TextUtils.TruncateAt.END
                 expandText.text = getString(R.string.string_expand_text)
             } else {

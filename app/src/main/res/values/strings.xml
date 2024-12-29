@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">DDItarea7</string>
 
-    <!-- More options menu -->
+    <!-- Toolbar -->
+    <string name="string_toolbar_title">Zapatillas Nike Tuned</string>
     <string name="button_back">Volver</string>
     <string name="string_report">Denunciar</string>
     <string name="string_share">Compartir</string>
 
     <!-- Slipper images -->
     <string name="string_slipper_image">Slipper Image</string>
+    <string name="string_start_likes">122</string>
 
-    <!-- Slipper title -->
+    <!-- Slipper info -->
+    <string name="string_rated_times">(190)</string>
     <string name="string_user_name">xxxUserNamexxx</string>
     <string name="string_slipper_title">Zapatillas Nike Tuned Talla 43 \nNuevas!!</string>
     <string name="string_slipper_number">43 ·&#160;</string>
@@ -17,6 +20,7 @@
     <string name="string_link_el_ganso"><u>Nike Tuned</u></string>
     <string name="string_price">65,00 €</string>
     <string name="string_price_protection">68,95 € Protección al comprador incluída</string>
+    <string name="string_frequent_announcements">Anuncios frecuentes</string>
 
     <!-- Slipper description -->
     <string name="string_description_title">Descripción</string>

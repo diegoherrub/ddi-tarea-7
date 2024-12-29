@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text">16sp</dimen>
+
+    <dimen name="text_frequent_announcements">10sp</dimen>
+    <dimen name="text_rated_times">15sp</dimen>
+    <dimen name="text_delivery_ammount">17sp</dimen>
+</resources>
