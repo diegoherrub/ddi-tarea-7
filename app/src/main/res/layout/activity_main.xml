@@ -7,32 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- toolbar -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/md_theme_onPrimary"
-        android:padding="@dimen/padding">
-
-        <ImageButton
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/arrow_back_24dp" />
-
-        <ImageButton
-            android:id="@+id/button_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="@dimen/margin"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/more_vert_24dp" />
-    </androidx.appcompat.widget.Toolbar>
-
     <ScrollView
         android:id="@+id/main"
         style="@style/style_main"
@@ -43,6 +17,7 @@
         <include layout="@layout/main_layout" />
     </ScrollView>
 
+    <!-- Bottom Buttons -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottoms_buttons"
         android:layout_width="match_parent"
@@ -91,4 +66,42 @@
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="@color/md_theme_primary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:padding="@dimen/padding">
+
+        <ImageButton
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_24dp"
+            app:tint="@color/icon_initial_color_buttons_toolbar"/>
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Zapatillas Nike Tuned"
+            android:textColor="#00FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/button_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginRight="@dimen/margin"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/more_vert_24dp"
+            app:tint="@color/icon_initial_color_buttons_toolbar"/>
+    </androidx.appcompat.widget.Toolbar>
 </FrameLayout>

@@ -75,6 +75,11 @@ class MainActivity : AppCompatActivity() {
 
             popupMenu.show()
         }
+        val buttonBack = findViewById<ImageButton>(R.id.button_back)
+        buttonBack.setOnClickListener {
+            Toast.makeText(this, "Back clicked", Toast.LENGTH_SHORT).show()
+        }
+        val toolbarTitle = findViewById<TextView>(R.id.toolbar_title)
 
         // Configurate the toolbar for change display
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
@@ -89,7 +94,29 @@ class MainActivity : AppCompatActivity() {
                 1f
             }
             // Actualiza el color de fondo de la Toolbar con el alpha calculado
-            toolbar.setBackgroundColor(adjustAlpha(getColor(R.color.md_theme_primary), alpha))
+            toolbar.setBackgroundColor(
+                adjustAlpha(
+                    getColor(R.color.md_theme_primaryContainer),
+                    alpha
+                )
+            )
+
+            // Calcula y aplica el nuevo color de los íconos
+            val iconColor = interpolateColor(
+                getColor(R.color.icon_initial_color_buttons_toolbar), // Color inicial del ícono
+                getColor(R.color.icon_final_color_buttons_toolbar),  // Color final del ícono
+                alpha
+            )
+            // Calcula y aplica el nuevo color del título
+            val titleColor = interpolateColor(
+                getColor(R.color.title_initial_color_toolbar), // Color inicial del título
+                getColor(R.color.title_final_color_toolbar),  // Color final del título
+                alpha
+            )
+
+            buttonBack.setColorFilter(iconColor)
+            buttonMore.setColorFilter(iconColor)
+            toolbarTitle.setTextColor(titleColor)
         }
 
         // Instancio las imágenes
@@ -140,7 +167,7 @@ class MainActivity : AppCompatActivity() {
 
         // Send Button Toast
         val sendButton: MaterialButton = findViewById(R.id.button_send)
-        sendButton.setOnClickListener{
+        sendButton.setOnClickListener {
             Toast.makeText(this, "Send clicked", Toast.LENGTH_SHORT).show()
         }
 
@@ -218,6 +245,25 @@ class MainActivity : AppCompatActivity() {
         val red = Color.red(color)
         val green = Color.green(color)
         val blue = Color.blue(color)
+        return Color.argb(alpha, red, green, blue)
+    }
+
+    private fun interpolateColor(startColor: Int, endColor: Int, factor: Float): Int {
+        val startAlpha = Color.alpha(startColor)
+        val startRed = Color.red(startColor)
+        val startGreen = Color.green(startColor)
+        val startBlue = Color.blue(startColor)
+
+        val endAlpha = Color.alpha(endColor)
+        val endRed = Color.red(endColor)
+        val endGreen = Color.green(endColor)
+        val endBlue = Color.blue(endColor)
+
+        val alpha = (startAlpha + factor * (endAlpha - startAlpha)).toInt()
+        val red = (startRed + factor * (endRed - startRed)).toInt()
+        val green = (startGreen + factor * (endGreen - startGreen)).toInt()
+        val blue = (startBlue + factor * (endBlue - startBlue)).toInt()
+
         return Color.argb(alpha, red, green, blue)
     }
 }

@@ -7,8 +7,8 @@
     android:layout_marginStart="@dimen/margin_xsmall"
     android:layout_marginEnd="@dimen/margin_xsmall"
     android:foreground="?attr/selectableItemBackground"
-    app:shapeAppearance="?attr/shapeAppearanceCornerExtraLarge"
-    android:background="@color/md_theme_primaryFixed">
+    app:shapeAppearance="?attr/shapeAppearanceCornerMedium"
+    android:background="@color/md_theme_onPrimary">
 
     <ImageView
         android:id="@+id/image_view"

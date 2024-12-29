@@ -6,6 +6,13 @@
     <color name="indicator_selected">#841277</color>
     <color name="indicator_unselected">#66e8830b</color>
 
+    <color name="icon_initial_color_buttons_toolbar">#e8830b</color>
+    <color name="icon_final_color_buttons_toolbar">#FFFFFF</color>
+
+    <color name="title_initial_color_toolbar">#00FFFFFF</color>
+    <color name="title_final_color_toolbar">#FFFFFF</color>
+
+
     <color name="md_theme_primary">#4F2AB8</color>
     <color name="md_theme_onPrimary">#FFFFFF</color>
     <color name="md_theme_primaryContainer">#7455DE</color>
