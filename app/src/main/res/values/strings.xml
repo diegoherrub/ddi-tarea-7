@@ -51,4 +51,8 @@
     <!-- delivery -->
     <string name="string_delivery_title">Envío</string>
     <string name="string_delivery_amount">Desde 0,00 €</string>
+
+    <!-- bottom buttons -->
+    <string name="string_make_an_offer">Hacer una oferta</string>
+    <string name="string_buy">Comprar</string>
 </resources>

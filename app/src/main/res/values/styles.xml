@@ -181,11 +181,13 @@
     </style>
 
     <style name="style_delivery_title">
+        <item name="android:paddingBottom">@dimen/padding</item>
         <item name="android:textSize">17sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="style_delivery_amount">
+        <item name="android:paddingBottom">@dimen/padding</item>
         <item name="android:layout_marginStart">@dimen/margin</item>
         <item name="android:textSize">17sp</item>
     </style>
